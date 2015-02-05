@@ -1,0 +1,1 @@
+require 'chord_transposer'

@@ -1,8 +1,10 @@
 # ChordTransposer
 
-TODO: Write a gem description
+ChordTransposer es una gema creada para el sitio web AcordesTotales.
+El objetivo de ChordTransposer es crear una api sencilla para modificar la tonalidad y notación de los acordes.
+De esta forma uno podría a partir del string 'La#m', aumentar un tono la nota que representa: 'Sol#m', o pasar a notación americana: 'A#m'.
 
-## Installation
+## Installationn
 
 Add this line to your application's Gemfile:
 

@@ -1,6 +1,8 @@
 module ChordTransposer
   class Transposer
 
+    REGEXP = /(?<tone>Do#|Do|Re#|Re|Mi|Fa#|Fa|Sol#|Sol|La#|La|Si)(?<mode>m|)/i
+
     CHORDS = ['Do', 'Do#', 'Re', 'Re#', 'Mi', 'Fa', 'Fa#', 'Sol', 'Sol#', 'La', 'La#', 'Si']
 
     def initialize(semitones=0)
@@ -8,8 +10,11 @@ module ChordTransposer
     end
 
     def transpose(chord)
-      index = CHORDS.index(chord)
-      CHORDS[(index + @semitones)%12]
+      match = REGEXP.match chord
+      tone  = match[:tone]
+      mode  = match[:mode]
+      index = CHORDS.index(tone)
+      CHORDS[(index + @semitones)%12] + mode
     end
   end
 end

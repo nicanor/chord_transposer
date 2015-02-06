@@ -71,5 +71,14 @@ describe ChordTransposer do
       end
     end
 
+    it "transposes seven semitones higher to american notation" do
+      transposer = ChordTransposer::Transposer.new(7, notation: :american)
+      original_chords = ['Do', 'Do#m7', 'Rem', 'Re#m7', 'Mi7', 'Fa', 'Fa#m7', 'Sol7', 'Sol#', 'Lam7', 'La#m', 'Si7']
+      expected_chords = ['G' , 'G#m7' , 'Am' , 'A#m7' , 'B7' , 'C' , 'C#m7' , 'D7'  , 'D#'  , 'Em7' , 'Fm'  , 'F#7']
+      (0..11).each do |index|
+        expect(transposer.transpose(original_chords[index])).to eq(expected_chords[index])
+      end
+    end
+
   end
 end

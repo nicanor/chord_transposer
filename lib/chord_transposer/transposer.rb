@@ -3,9 +3,11 @@ module ChordTransposer
 
     REGEXP = /(?<tone>Do#|Do|Re#|Re|Mi|Fa#|Fa|Sol#|Sol|La#|La|Si)(?<mode>m7|m|7|)/i
 
-    CHORDS = ['Do', 'Do#', 'Re', 'Re#', 'Mi', 'Fa', 'Fa#', 'Sol', 'Sol#', 'La', 'La#', 'Si']
+    CHORDS   = ['Do', 'Do#', 'Re', 'Re#', 'Mi', 'Fa', 'Fa#', 'Sol', 'Sol#', 'La', 'La#', 'Si']
+    AMERICAN = ['C',  'C#',  'D',  'D#',  'E',  'F',  'F#',  'G',   'G#',   'A',  'A#',  'B' ]
 
-    def initialize(semitones=0)
+    def initialize(semitones=0, notation=:latin)
+      @notation  = notation
       @semitones = semitones
     end
 
@@ -14,7 +16,11 @@ module ChordTransposer
       tone  = match[:tone]
       mode  = match[:mode]
       index = CHORDS.index(tone)
-      CHORDS[(index + @semitones)%12] + mode
+      if @notation == :latin
+        CHORDS[(index + @semitones)%12] + mode
+      else
+        AMERICAN[(index + @semitones)%12] + mode
+      end
     end
   end
 end

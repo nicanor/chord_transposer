@@ -17,7 +17,7 @@ module ChordTransposer
     end
 
     def transpose(chord)
-      match = REGEXP.match chord
+      match = REGEXP.match chord.capitalize
       index = ALL.index(match[:tone])%12
       @array[index] + match[:mode]
     end

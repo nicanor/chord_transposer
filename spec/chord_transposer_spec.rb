@@ -89,5 +89,14 @@ describe ChordTransposer do
       end
     end
 
+    it "transposes when chords are not camelized" do
+      transposer = ChordTransposer::Transposer.new(5)
+      original_chords = ['g' , 'g#m7' , 'am' , 'a#m7' , 'b7' , 'c' , 'do#m7' , 're7'  , 're#'  , 'MIm7' , 'FAm'  , 'fa#7']
+      expected_chords = ['Do', 'Do#m7', 'Rem', 'Re#m7', 'Mi7', 'Fa', 'Fa#m7', 'Sol7', 'Sol#', 'Lam7', 'La#m', 'Si7']
+      (0..11).each do |index|
+        expect(transposer.transpose(original_chords[index])).to eq(expected_chords[index])
+      end
+    end
+
   end
 end

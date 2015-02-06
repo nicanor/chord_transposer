@@ -80,5 +80,14 @@ describe ChordTransposer do
       end
     end
 
+    it "transposes 5 semitones higher in american notation to latin notation" do
+      transposer = ChordTransposer::Transposer.new(5)
+      original_chords = ['G' , 'G#m7' , 'Am' , 'A#m7' , 'B7' , 'C' , 'C#m7' , 'D7'  , 'D#'  , 'Em7' , 'Fm'  , 'F#7']
+      expected_chords = ['Do', 'Do#m7', 'Rem', 'Re#m7', 'Mi7', 'Fa', 'Fa#m7', 'Sol7', 'Sol#', 'Lam7', 'La#m', 'Si7']
+      (0..11).each do |index|
+        expect(transposer.transpose(original_chords[index])).to eq(expected_chords[index])
+      end
+    end
+
   end
 end

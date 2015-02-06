@@ -7,20 +7,17 @@ module ChordTransposer
     AMERICAN = ['C',  'C#',  'D',  'D#',  'E',  'F',  'F#',  'G',   'G#',   'A',  'A#',  'B' ]
 
     def initialize(semitones=0, notation=:latin)
-      @notation  = notation
-      @semitones = semitones
+      @array = if notation == :latin
+        CHORDS.rotate(semitones)
+      else
+        AMERICAN.rotate(semitones)
+      end
     end
 
     def transpose(chord)
       match = REGEXP.match chord
-      tone  = match[:tone]
-      mode  = match[:mode]
-      index = CHORDS.index(tone)
-      if @notation == :latin
-        CHORDS[(index + @semitones)%12] + mode
-      else
-        AMERICAN[(index + @semitones)%12] + mode
-      end
+      index = CHORDS.index match[:tone]
+      @array[index] + match[:mode]
     end
   end
 end

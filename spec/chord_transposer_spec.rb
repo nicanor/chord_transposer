@@ -53,5 +53,14 @@ describe ChordTransposer do
       end
     end
 
+    it "transposes all 12 sept notes 6 semitones higher" do
+      transposer = ChordTransposer::Transposer.new(6)
+      original_chords = ['Do7', 'Do#7', 'Re7', 'Re#7', 'Mi7', 'Fa7', 'Fa#7', 'Sol7', 'Sol#7', 'La7', 'La#7', 'Si7']
+      expected_chords = ['Fa#7', 'Sol7', 'Sol#7', 'La7', 'La#7', 'Si7', 'Do7', 'Do#7', 'Re7', 'Re#7', 'Mi7', 'Fa7']
+      (0..11).each do |index|
+        expect(transposer.transpose(original_chords[index])).to eq(expected_chords[index])
+      end
+    end
+
   end
 end

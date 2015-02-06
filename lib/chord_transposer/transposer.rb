@@ -1,7 +1,7 @@
 module ChordTransposer
   class Transposer
 
-    REGEXP = /(?<tone>Do#|Do|Re#|Re|Mi|Fa#|Fa|Sol#|Sol|La#|La|Si)(?<mode>m|)/i
+    REGEXP = /(?<tone>Do#|Do|Re#|Re|Mi|Fa#|Fa|Sol#|Sol|La#|La|Si)(?<mode>m|7|)/i
 
     CHORDS = ['Do', 'Do#', 'Re', 'Re#', 'Mi', 'Fa', 'Fa#', 'Sol', 'Sol#', 'La', 'La#', 'Si']
 

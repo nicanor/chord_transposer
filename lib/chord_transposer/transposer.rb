@@ -3,13 +3,13 @@ module ChordTransposer
 
     CHORDS = ['Do', 'Do#', 'Re', 'Re#', 'Mi', 'Fa', 'Fa#', 'Sol', 'Sol#', 'La', 'La#', 'Si']
 
-    
-    def initialize(tranpose=0)
+    def initialize(semitones=0)
+      @semitones = semitones
     end
 
     def transpose(chord)
       index = CHORDS.index(chord)
-      CHORDS[(index + 2)%12]
+      CHORDS[(index + @semitones)%12]
     end
   end
 end

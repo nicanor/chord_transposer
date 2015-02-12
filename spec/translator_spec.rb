@@ -35,7 +35,17 @@ describe ChordTransposer::Translator do
 
     it "can return html response" do
       translator = ChordTransposer::Translator.new(2, response: :html)
-      expect(translator.call("do")).to eq("<span class=\"chord\">Re</span>")
+      expect(translator.call("do")).to eq("<span class=\"chord\" data-chord=\"Re\">Re</span>")
+    end
+
+    it "others models than mayor are valids too" do
+      translator = ChordTransposer::Translator.new(2)
+      expect(translator.call("dom - re7 - mim7 - fa9 - sol11 - la13")).to eq("Rem - Mi7 - Fa#m7 - Sol9 - La11 - Si13")
+    end
+
+    it "should ignore line jumps" do
+      translator = ChordTransposer::Translator.new(2)
+      expect(translator.call("C     Bb               A7\n")).to eq("Re     Do               Si7\n")
     end
   end
 end

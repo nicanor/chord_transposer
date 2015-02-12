@@ -98,5 +98,23 @@ describe ChordTransposer do
       end
     end
 
+    it "transposes bemole notes one tone higher" do
+      transposer = ChordTransposer::Transposer.new(2)
+      original_chords = ['Reb', 'Mib', 'Solb', 'Lab', 'Sib']
+      expected_chords = ['Re#', 'Fa', 'Sol#', 'La#',  'Do']
+      (0..4).each do |index|
+        expect(transposer.transpose(original_chords[index])).to eq(expected_chords[index])
+      end
+    end
+
+    it "transposes bemole american notes one tone higher" do
+      transposer = ChordTransposer::Transposer.new(2)
+      original_chords = ['Db', 'Eb', 'Gb', 'Ab', 'Bb']
+      expected_chords = ['Re#', 'Fa', 'Sol#', 'La#',  'Do']
+      (0..4).each do |index|
+        expect(transposer.transpose(original_chords[index])).to eq(expected_chords[index])
+      end
+    end
+
   end
 end

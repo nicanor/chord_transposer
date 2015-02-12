@@ -1,7 +1,7 @@
 module ChordTransposer
   class Transposer
 
-    REGEXP = /(?<tone>Do#|Do|Reb|Re#|Re|Mib|Mi|Fa#|Fa|Solb|Sol#|Sol|Lab|La#|La|Sib|Si|C#|C|Db|D#|D|Eb|E|F#|F|Gb|G#|G|Ab|A#|A|Bb|B)(?<mode>m7|m|7|)/i
+    REGEXP = /(?<tone>Do#|Do|Reb|Re#|Re|Mib|Mi|Fa#|Fa|Solb|Sol#|Sol|Lab|La#|La|Sib|Si|C#|C|Db|D#|D|Eb|E|F#|F|Gb|G#|G|Ab|A#|A|Bb|B)(?<mode>m7|m|13|11|9|7|6|)/i
 
     LATIN          = ['Do', 'Do#', 'Re', 'Re#', 'Mi', 'Fa', 'Fa#',  'Sol', 'Sol#', 'La', 'La#', 'Si']
     AMERICAN       = ['C',  'C#',  'D',  'D#',  'E',  'F',  'F#',   'G',   'G#',   'A',  'A#',  'B' ]

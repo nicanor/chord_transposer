@@ -19,10 +19,12 @@ module ChordTransposer
       end
     end
 
-    def transpose(chord)
+    def call(chord)
       match = REGEXP.match chord.capitalize
       index = ALL.index(match[:tone])%12
       @array[index] + match[:mode]
     end
+
+    alias_method :transpose, :call
   end
 end
